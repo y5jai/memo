@@ -1,0 +1,7 @@
+あなたはPython3プログラマーです。
+フレームワークはdjangoを使います。
+以下の要件を満たすコードを出力してください。
+ーGoogleスプレッドシートを読み込む。
+ーシートの情報を一覧で表示する。
+
+git clone https://y5jai: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@github.com/y5jai/testApp01.git
