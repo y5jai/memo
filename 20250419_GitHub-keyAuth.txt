@@ -1,0 +1,117 @@
+
+yhmc@ysMacBkProM1 GitHub % ssh-keygen -t ed25519 -C "y5jai@gmail.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/yhmc/.ssh/id_ed25519): /Users/yhmc/.ssh/id_ed25519_y5jai
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/yhmc/.ssh/id_ed25519_y5jai
+Your public key has been saved in /Users/yhmc/.ssh/id_ed25519_y5jai.pub
+The key fingerprint is:
+SHA256:yj8IRYsDXrCfYDDSdK5zijv8cQQIsFV73kcUQQZxtcA y5jai@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|Bo+oo   o=O+.    |
+|o=++...  +E. .   |
+|.o++oo..  . .    |
+| ..+++o. .       |
+|  o ++. S .      |
+| . +o. . .       |
+|o .. oo.         |
+|.o  o ...        |
+|....    ..       |
++----[SHA256]-----+
+
+yhmc@ysMacBkProM1 GitHub % ll ~/.ssh 
+total 40
+-rw-------  1 yhmc  staff   411  4 19 18:44 id_ed25519_y5jai
+-rw-r--r--  1 yhmc  staff    97  4 19 18:44 id_ed25519_y5jai.pub
+-rw-------  1 yhmc  staff  1662  1  7  2023 known_hosts
+-rw-------  1 yhmc  staff   924  1  7  2023 known_hosts.old
+-r--------@ 1 yhmc  staff  2494  7 12  2022 yhigpykey.pem
+
+yhmc@ysMacBkProM1 GitHub % cat ~/.ssh/id_ed25519_y5jai.pub 
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDju4EOKmNK8rKZ6MD7Oxs+qPinTeKQuOvuiaepf9nX8 y5jai@gmail.com
+
+
+yhmc@ysMacBkProM1 GitHub % cd y5jai 
+yhmc@ysMacBkProM1 y5jai % cd memo 
+yhmc@ysMacBkProM1 memo % git remote set-url origin git@github.com:y5jai/memo.git
+yhmc@ysMacBkProM1 memo % git push origin main:main
+The authenticity of host 'github.com (20.27.177.113)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+
+
+yhmc@ysMacBkProM1 memo % ssh -T git@github.com
+git@github.com: Permission denied (publickey).
+
+yhmc@ysMacBkProM1 memo % eval "$(ssh-agent -s)" ssh-add ~/.ssh/id_ed25519_y5jai
+Agent pid 86425
+Identity added: /Users/yhmc/.ssh/id_ed25519_y5jai (y5jai@gmail.com)
+
+
+
+yhmc@ysMacBkProM1 memo % ssh -T git@github.com
+Hi y5jai! You've successfully authenticated, but GitHub does not provide shell access.
+yhmc@ysMacBkProM1 memo % git remote set-url origin git@github.com:y5jai/memo.git
+
+
+
+yhmc@ysMacBkProM1 memo % git push origin main:main
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (10/10), 1.14 KiB | 1.14 MiB/s, done.
+Total 10 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 2 local objects.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: 
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote: 
+remote:     - Push cannot contain secrets
+remote: 
+remote:     
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push
+remote:     
+remote:     
+remote:       —— GitHub Personal Access Token ——————————————————————
+remote:        locations:
+remote:          - commit: c9f25f29a9ebcad9ea90eeec1514f6ecbdbfb1a0
+remote:            path: 20250101_Copilot-python.txt:14
+remote:     
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/y5jai/memo/security/secret-scanning/unblock-secret/2vwVtBj4b5jPMgDPpRJXtiqOCfl
+remote:     
+remote: 
+remote: 
+To github.com:y5jai/memo.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'github.com:y5jai/memo.git'
+
+
+https://github.com/y5jai/memo/security/secret-scanning/unblock-secret/2vwVtBj4b5jPMgDPpRJXtiqOCfl
+
+
+yhmc@ysMacBkProM1 memo % git push origin main:main
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (10/10), 1.14 KiB | 1.14 MiB/s, done.
+Total 10 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 2 local objects.
+To github.com:y5jai/memo.git
+   459b1f4..b4b1e58  main -> main
+yhmc@ysMacBkProM1 memo % 
